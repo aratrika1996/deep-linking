@@ -5,7 +5,7 @@ const App = () => {
   useEffect(() => {
     if (isAndroid) {
       const url =
-        "intent://instagram.com/#Intent;scheme=https;package=com.instagram.android;end";
+        "intent://metamask.io/#Intent;scheme=https;package=io.metamask.android;end";
 
       window.location.replace(url);
     } else if (isIOS) {
@@ -17,7 +17,7 @@ const App = () => {
         );
       }, 10000);
     } else {
-      window.location.replace("https://instagram.com");
+      window.location.replace("https://metamask.io");
     }
   }, []);
 
