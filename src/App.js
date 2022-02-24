@@ -27,7 +27,7 @@ const App = () => {
         If you have not been automatically redirected, click on the following link:
       </div>
       {isAndroid ? (
-        <a href="https://play.google.com/store/apps/details?id=com.instagram.android">
+        <a href="https://play.google.com/store/apps/details?id=io.metamask">
           Open Android app
         </a>
       ) : isIOS ? (
