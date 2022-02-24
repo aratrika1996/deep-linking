@@ -5,7 +5,7 @@ const App = () => {
   useEffect(() => {
     if (isAndroid) {
       const url =
-        "intent://metamask.io/#Intent;scheme=https;package=io.metamask.android;end";
+        "intent://metamask.io/#Intent;scheme=https;package=io.metamask;end";
 
       window.location.replace(url);
     } else if (isIOS) {
