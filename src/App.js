@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { isAndroid } from "react-device-detect";
+import { browserName, browserVersion } from "react-device-detect";
 
 const App = () => {
   // useEffect(() => {
@@ -40,9 +41,9 @@ const App = () => {
     // }
   }
 
-  const getUrl = () => {
-    const url = window.location.pathname
-    setAddress(url)
+  const getBrowser = () => {
+    const browser = browserName
+    setAddress(browser)
   }
   // const connectWallet = async () => {
   //   const [selectedAddress] = await window.ethereum.enable();
@@ -51,7 +52,7 @@ const App = () => {
   return (
     <div className="App">
       <button className="wallet" onClick={deepLink}>Connect Wallet</button>
-      <button className="wallet" onClick={getUrl}>Get url</button>
+      <button className="wallet" onClick={getBrowser}>Get Browser</button>
       <span>{address}</span>
       {/* {isAndroid ? (
         <a href="https://play.google.com/store/apps/details?id=io.metamask">
