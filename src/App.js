@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { isAndroid } from "react-device-detect";
 
 const App = () => {
@@ -21,20 +21,34 @@ const App = () => {
   //   }
   // }, []);
 
+  const [metaBrowser, setMetaBrowser] = useState(false)
+  const [address, setAddress] = useState()
+
   const deepLink = () => {
-    if (isAndroid) {
-          // const url = "intent://metamask.io/#Intent;scheme=https;package=io.metamask;end";
-          const url = 'https://metamask.app.link/dapp/deep-linking.vercel.app'
-          window.location.replace(url);
+    if (!metaBrowser) {
+      if (isAndroid) {
+        // const url = "intent://metamask.io/#Intent;scheme=https;package=io.metamask;end";
+        const url = 'https://metamask.app.link/dapp/deep-linking.vercel.app'
+        window.location.replace(url);
+      }
+      else {
+        window.location.replace("https://metamask.io")
+      }
+      setMetaBrowser(true)
     }
     else {
-      window.location.replace("https://metamask.io")
+      connectWallet()
     }
   }
 
+  const connectWallet = async () => {
+    const [selectedAddress] = await window.ethereum.enable();
+    setAddress(selectedAddress)
+  }
   return (
     <div className="App">
       <button className="wallet" onClick={deepLink}>Connect Wallet</button>
+      <span>{address}</span>
       {/* {isAndroid ? (
         <a href="https://play.google.com/store/apps/details?id=io.metamask">
           Open Android app
