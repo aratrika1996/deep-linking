@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { isAndroid, isIOS } from "react-device-detect";
+import React from "react";
+import { isAndroid } from "react-device-detect";
 
 const App = () => {
   // useEffect(() => {
