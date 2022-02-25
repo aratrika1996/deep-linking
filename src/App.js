@@ -29,6 +29,7 @@ const App = () => {
         // const url = "intent://metamask.io/#Intent;scheme=https;package=io.metamask;end";
         const url = 'https://metamask.app.link/dapp/deep-linking.vercel.app'
         window.location.replace(url);
+        setAddress(url)
       }
       else {
         window.location.replace("https://metamask.io")
