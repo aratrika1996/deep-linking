@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { isAndroid } from "react-device-detect";
-import { browserName } from "react-device-detect";
+// import { browserName } from "react-device-detect";
 
 const App = () => {
   // useEffect(() => {
@@ -26,6 +26,10 @@ const App = () => {
   const [address, setAddress] = useState()
 
   const deepLink = () => {
+    if(window.ethereum) {
+      connectWallet()
+    }
+    else {
       if (isAndroid) {
         // const url = "intent://metamask.io/#Intent;scheme=https;package=io.metamask;end";
         const url = 'https://metamask.app.link/dapp/deep-linking.vercel.app'
@@ -34,37 +38,18 @@ const App = () => {
       else {
         window.location.replace("https://metamask.io")
       }
-      // setMetaBrowser(true)
-    // }
-    // else {
-    //   connectWallet()
-    // }
+    }
   }
 
-  const getBrowser = () => {
-    const browser = browserName
-    setAddress(browser)
+  const connectWallet = async () => {
+    const [selectedAddress] = await window.ethereum.enable();
+    setAddress(selectedAddress)
   }
-  // const connectWallet = async () => {
-  //   const [selectedAddress] = await window.ethereum.enable();
-  //   setAddress(selectedAddress)
-  // }
   return (
     <div className="App">
-      <button className="wallet" onClick={deepLink}>Connect Wallet</button>
-      <button className="wallet" onClick={getBrowser}>Get Browser</button>
+      <button className="wallet" onClick={deepLink}>Connect Wallet</button><br></br>
+      {/* <button className="wallet" onClick={getBrowser}>Get Browser</button> */}
       <span>{address}</span>
-      {/* {isAndroid ? (
-        <a href="https://play.google.com/store/apps/details?id=io.metamask">
-          Open Android app
-        </a>
-      ) : isIOS ? (
-        <a href="https://apps.apple.com/us/app/instagram/id389801252">
-          Open iOS app
-        </a>
-      ) : (
-        <a href="https://instagram.com">Open Web app</a>
-      )} */}
     </div>
   );
 };
