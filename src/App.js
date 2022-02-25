@@ -22,7 +22,7 @@ const App = () => {
   // }, []);
 
   // const [metaBrowser, setMetaBrowser] = useState(false)
-  const [address, setAddress] = useState()
+  const [address, setAddress] = useState(window.location.href)
 
   const deepLink = () => {
       if (isAndroid) {
@@ -41,10 +41,6 @@ const App = () => {
     // }
   }
 
-  const getUrl = () => {
-    const url = window.location.href
-    setAddress(url)
-  }
   // const connectWallet = async () => {
   //   const [selectedAddress] = await window.ethereum.enable();
   //   setAddress(selectedAddress)
@@ -52,7 +48,6 @@ const App = () => {
   return (
     <div className="App">
       <button className="wallet" onClick={deepLink}>Connect Wallet</button>
-      <button className="wallet" onClick={getUrl}>Get url</button>
       <span>{address}</span>
       {/* {isAndroid ? (
         <a href="https://play.google.com/store/apps/details?id=io.metamask">
