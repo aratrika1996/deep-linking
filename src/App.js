@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { isAndroid } from "react-device-detect";
-import { browserName, browserVersion } from "react-device-detect";
+import { browserName } from "react-device-detect";
 
 const App = () => {
   // useEffect(() => {
