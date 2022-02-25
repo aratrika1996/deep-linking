@@ -21,11 +21,10 @@ const App = () => {
   //   }
   // }, []);
 
-  const [metaBrowser, setMetaBrowser] = useState(false)
+  // const [metaBrowser, setMetaBrowser] = useState(false)
   const [address, setAddress] = useState()
 
   const deepLink = () => {
-    if (!metaBrowser) {
       if (isAndroid) {
         // const url = "intent://metamask.io/#Intent;scheme=https;package=io.metamask;end";
         const url = 'https://metamask.app.link/dapp/deep-linking.vercel.app'
@@ -34,20 +33,25 @@ const App = () => {
       else {
         window.location.replace("https://metamask.io")
       }
-      setMetaBrowser(true)
-    }
-    else {
-      connectWallet()
-    }
+      // setMetaBrowser(true)
+    // }
+    // else {
+    //   connectWallet()
+    // }
   }
 
-  const connectWallet = async () => {
-    const [selectedAddress] = await window.ethereum.enable();
-    setAddress(selectedAddress)
+  const getUrl = () => {
+    const url = window.location.href
+    setAddress(url)
   }
+  // const connectWallet = async () => {
+  //   const [selectedAddress] = await window.ethereum.enable();
+  //   setAddress(selectedAddress)
+  // }
   return (
     <div className="App">
       <button className="wallet" onClick={deepLink}>Connect Wallet</button>
+      <button className="wallet" onClick={getUrl}>Get url</button>
       <span>{address}</span>
       {/* {isAndroid ? (
         <a href="https://play.google.com/store/apps/details?id=io.metamask">
